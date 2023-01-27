@@ -4,10 +4,11 @@ import { getallmovies, getbyID, createmovie, deletemovie, updatemoviebyID } from
 const router = express.Router();
 
 
-router.get("/", auth, async function (request, response) {
+router.get("/", async function (request, response) {
     if (request.query.rating) {
         request.query.rating = + request.query.rating
     }
+    console.log("hi")
 
     console.log(request.query)
     const movies = await getallmovies(request)

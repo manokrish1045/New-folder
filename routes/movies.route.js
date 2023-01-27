@@ -1,9 +1,10 @@
 import express from "express";
+import { auth } from "../middleware/auth.js";
 import { getallmovies, getbyID, createmovie, deletemovie, updatemoviebyID } from "../service/movies.service.js";
 const router = express.Router();
 
 
-router.get("/", async function (request, response) {
+router.get("/", auth, async function (request, response) {
     if (request.query.rating) {
         request.query.rating = + request.query.rating
     }
